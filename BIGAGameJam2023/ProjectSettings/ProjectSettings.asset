@@ -152,7 +152,8 @@ PlayerSettings:
   resetResolutionOnWindowResize: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Standalone: com.DefaultCompany.BIGAGameJam2023
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -732,7 +733,7 @@ PlayerSettings:
   embeddedLinuxEnableGamepadInput: 1
   hmiCpuConfiguration: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 0
+  activeInputHandler: 2
   windowsGamepadBackendHint: 0
   cloudProjectId: aa7cbbb3-d5e4-4981-a4dd-7d2feebb7818
   framebufferDepthMemorylessMode: 0
