@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3112b5edb0eb6c941adddd24e8e01c22, type: 3}
   m_Name: FreezeMage
   m_EditorClassIdentifier: 
+  heroID: 1
   heroName: FreezeMage
   heroPrefab: {fileID: 2712287881610527365, guid: e07839982c2013c46a99c21b4b14f3e0, type: 3}
   heroSprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}

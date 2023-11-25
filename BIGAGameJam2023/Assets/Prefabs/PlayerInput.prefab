@@ -90,6 +90,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a1943e13-58ba-455e-b1d5-fcefaa8ca593
     m_ActionName: Player/Dash[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1790440712789818535}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnPlayerMageAttack1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b8175c18-7fef-4305-9372-95f45e941017
+    m_ActionName: Player/Attack1[/Keyboard/h,/USB Gamepad /button3]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1790440712789818535}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnPlayerMageAttack2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a381c456-a6e3-437e-9aba-b4fa0cd21dc3
+    m_ActionName: Player/Attack2[/Keyboard/j,/USB Gamepad /button2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1790440712789818535}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnPlayerMageAttack3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0fc492e8-e4e7-4b0e-9459-d49ebb3b3230
+    m_ActionName: Player/Attack3[/Keyboard/k,/USB Gamepad /button4]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

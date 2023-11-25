@@ -8,6 +8,7 @@ public class PlayerInputHandler : MonoBehaviour
     private HeroStats heroStatsSO;
     [SerializeField] private GameObject playerPrefab;
     private PlayerMovement playerMovement;
+    private IMageAttack mageAttacks;
 
 	void Start()
     {
@@ -18,6 +19,7 @@ public class PlayerInputHandler : MonoBehaviour
 		{
             playerMovement = Instantiate(heroStatsSO.heroPrefab,
                 GameManager.instance.GetSpawnPoints()[0].transform).GetComponent<PlayerMovement>();
+            mageAttacks = playerMovement.transform.GetComponent<IMageAttack>();
 
             transform.parent = playerMovement.transform;
             transform.position = playerMovement.transform.position;
@@ -35,6 +37,21 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnPlayerDash(InputAction.CallbackContext ctx)
     {
         playerMovement.OnDash(ctx);
+    }
+
+    public void OnPlayerMageAttack1()
+	{
+        mageAttacks.MageAttack1();
+	}
+
+    public void OnPlayerMageAttack2()
+    {
+        mageAttacks.MageAttack2();
+    }
+
+    public void OnPlayerMageAttack3()
+    {
+        mageAttacks.MageAttack3();
     }
 
     public void SetHeroStatsSO(HeroStats _heroStatsSO)

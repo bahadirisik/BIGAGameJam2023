@@ -12,7 +12,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private GameObject[] spawnPoints;
 	[SerializeField] private List<PlayerInput> playerList = new List<PlayerInput>();
 
-	int selectedHeroIndex = 0;
+	int playerOneSelectedHeroIndex = 0;
+	int playerTwoSelectedHeroIndex = 0;
 
 	private void Awake()
 	{
@@ -28,20 +29,29 @@ public class GameManager : MonoBehaviour
 	}
 	void Start()
     {
-		selectedHeroIndex = 0;
+		playerOneSelectedHeroIndex = 0;
+		playerTwoSelectedHeroIndex = 0;
+    }
+
+	public void SetJoinedPlayer()
+	{
 		PlayerInputManager.instance.JoinPlayer(0, -1, null);
 		PlayerInputManager.instance.JoinPlayer(1, -1, null);
-    }
+	}
 
     void OnPlayerJoined(PlayerInput playerInput)
 	{
-		if (selectedHeroIndex >= 1)
-			selectedHeroIndex = 1;
 
-		playerInput.GetComponent<PlayerInputHandler>().SetHeroStatsSO(selectedHeroesSO[selectedHeroIndex]);
-		selectedHeroIndex++;
-		playerList.Add(playerInput);
-		Debug.Log("aaaa");
+		if(playerInput.playerIndex == 0)
+		{
+			playerInput.GetComponent<PlayerInputHandler>().SetHeroStatsSO(selectedHeroesSO[playerOneSelectedHeroIndex]);
+			playerList.Add(playerInput);
+		}else if(playerInput.playerIndex == 1)
+		{
+			playerInput.GetComponent<PlayerInputHandler>().SetHeroStatsSO(selectedHeroesSO[playerTwoSelectedHeroIndex]);
+			playerList.Add(playerInput);
+		}
+
 	}
 
 	void OnPlayerLeft(PlayerInput playerInput)
@@ -52,5 +62,15 @@ public class GameManager : MonoBehaviour
 	public GameObject[] GetSpawnPoints()
 	{
 		return spawnPoints;
+	}
+
+	public void SetPlayerOneHeroIndex(int index)
+	{
+		playerOneSelectedHeroIndex = index;
+	}
+
+	public void SetPlayerTwoHeroIndex(int index)
+	{
+		playerTwoSelectedHeroIndex = index;
 	}
 }
