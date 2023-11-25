@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
@@ -45,16 +47,23 @@ public class PlayerMovement : MonoBehaviour
             //walkingEffect.SetActive(false);
         }
 
-        if (canDash && Input.GetKeyDown(KeyCode.LeftShift))
+        /*if (canDash)
         {
             StartCoroutine(Dash());
-        }
+        }*/
     }
 
-    public void SetMovementVector(Vector2 movementVector)
+    public void OnMove(InputAction.CallbackContext ctx)
 	{
-        movement = movementVector;
+        movement = ctx.ReadValue<Vector2>();
 	}
+
+    public void OnDash(InputAction.CallbackContext ctx)
+    {
+        if (!canDash)
+            return;
+        StartCoroutine(Dash());
+    }
 
     private void FixedUpdate()
     {

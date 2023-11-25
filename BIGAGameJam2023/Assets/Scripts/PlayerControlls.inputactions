@@ -12,7 +12,7 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Dash",
@@ -81,17 +81,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "e314cb56-bdbe-4768-9b43-5fbfb9c83915",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "ArrowKeys",
                     "id": "cfe3b78d-43d5-48ca-822b-a17bb6d888ae",
                     "path": "2DVector",
@@ -108,7 +97,7 @@
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard1",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -119,7 +108,7 @@
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard1",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -130,7 +119,7 @@
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard1",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -141,10 +130,65 @@
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard1",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "70bce295-7211-4a88-a383-fbf276781491",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "344e0d8f-cc8f-41b4-a142-9b74923cd89b",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7b9cce24-5434-460d-a264-2676f2ef249c",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "JoyS",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3d43accd-ef40-4ea0-b408-b45c2c327e21",
+                    "path": "<HID::USB Gamepad >/hat",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "JoyS",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f05ddb1a-9c27-4e62-b938-cb3e282fa0d8",
+                    "path": "<HID::USB Gamepad >/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "JoyS",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -159,11 +203,22 @@
                 },
                 {
                     "name": "",
-                    "id": "e9556499-1a0b-4649-8f07-84b4b6b7b08d",
+                    "id": "abb6cd6a-f479-4db9-afdc-3722182120d8",
+                    "path": "<HID::USB Gamepad >/button5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "JoyS",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "17f623bd-f119-4c3d-af2d-7d02c20f8dfe",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "Gamepad",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -184,11 +239,33 @@
             ]
         },
         {
-            "name": "Controller",
-            "bindingGroup": "Controller",
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "JoyS",
+            "bindingGroup": "JoyS",
+            "devices": [
+                {
+                    "devicePath": "<Joystick>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Keyboard1",
+            "bindingGroup": "Keyboard1",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
                     "isOptional": false,
                     "isOR": false
                 }
