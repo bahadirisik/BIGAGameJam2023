@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     float playerSpeed = 5f;
     float startPlayerSpeed = 5f;
 
+    private bool canMove = true;
+
     //[SerializeField] private TrailRenderer tr;
     //[SerializeField] private GameObject walkingEffect;
     //private string[] dashSounds = { "Dash1", "Dash2" };
@@ -31,11 +33,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDashing)
+        if (!canMove)
             return;
 
-       /* movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");*/
+        if (isDashing)
+            return;
 
 
         if (movement.magnitude != 0f)
@@ -46,11 +48,6 @@ public class PlayerMovement : MonoBehaviour
         {
             //walkingEffect.SetActive(false);
         }
-
-        /*if (canDash)
-        {
-            StartCoroutine(Dash());
-        }*/
     }
 
     public void OnMove(InputAction.CallbackContext ctx)
@@ -60,13 +57,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext ctx)
     {
-        if (!canDash)
+        if (!canDash || !canMove)
             return;
         StartCoroutine(Dash());
     }
 
     private void FixedUpdate()
     {
+        if (!canMove)
+            return;
+
         if (isDashing)
             return;
 
@@ -87,5 +87,36 @@ public class PlayerMovement : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+    }
+
+    public void StartHitEffect(Vector2 _hitDir, float hitPower, float hitTime)
+	{
+        StartCoroutine(GetHit(_hitDir.normalized, hitPower, hitTime));
+	}
+
+    private IEnumerator GetHit(Vector2 _hitDir, float hitPower, float hitTime)
+    {
+        //FindObjectOfType<AudioManager>().Play(dashSounds[Random.Range(0, dashSounds.Length)]);
+        canMove = false;
+        Vector2 hitDir = _hitDir;
+        rb.velocity = hitDir * hitPower;
+        //tr.emitting = true;
+        yield return new WaitForSeconds(hitTime);
+        //tr.emitting = false;
+        canMove = true;
+        /*yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;*/
+    }
+
+    public void SetPlayerSpeed(float speed, float effectTimer)
+	{
+        StartCoroutine(SetSpeed(speed, effectTimer));
+	}
+
+    private IEnumerator SetSpeed(float speed, float effectTimer)
+	{
+        playerSpeed += speed;
+        yield return new WaitForSeconds(effectTimer);
+        playerSpeed = startPlayerSpeed;
     }
 }

@@ -97,9 +97,10 @@ GameObject:
   - component: {fileID: 2712287881610527484}
   - component: {fileID: 2712287881610527482}
   - component: {fileID: 4044351302287149530}
+  - component: {fileID: 2844836933223493051}
   m_Layer: 0
   m_Name: FreezeMagePrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,8 +208,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b04e118cd77e5084dabbbf3512c3afef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icePieces: {fileID: 3304368444010512167, guid: 4f89e01da3bc59f42b05288c515fb5f3, type: 3}
+  iceNova: {fileID: 3052102529818435104, guid: ce221796feef2fc458d8ea002d6e39aa, type: 3}
   directionArrow: {fileID: 8449603892132514248}
   rotateSpeed: 100
+--- !u!114 &2844836933223493051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2712287881610527365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d75727a418314c40a1abf3f314a5f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2796871801740549209
 GameObject:
   m_ObjectHideFlags: 0

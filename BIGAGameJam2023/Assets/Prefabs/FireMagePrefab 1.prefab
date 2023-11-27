@@ -213,9 +213,10 @@ GameObject:
   - component: {fileID: 7586206965801029146}
   - component: {fileID: 7586206965801029148}
   - component: {fileID: 4996138196973804631}
+  - component: {fileID: -582986409796264092}
   m_Layer: 6
   m_Name: FireMagePrefab 1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -334,6 +335,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireBlast: {fileID: 2972165994557361073, guid: 8dacae19f74a631428da65cc920962c1, type: 3}
-  fireBlastSpeed: 10
+  fireWall: {fileID: 7936961836147210106, guid: 397a106ebf700804c89ac2e31bfe32b2, type: 3}
+  fireBall: {fileID: 2141614355923575990, guid: b566d00dbfb3f774c9e9467aa572841f, type: 3}
   directionArrow: {fileID: 33950559538903030}
   rotateSpeed: 100
+--- !u!114 &-582986409796264092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7586206965801029219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abfaaead8a91a0478bb73134629737b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
