@@ -113,6 +113,16 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(SetSpeed(speed, effectTimer));
 	}
 
+    public void SlowPlayerSpeed(float speed)
+    {
+        playerSpeed = speed;
+    }
+
+    public void DefaultPlayerSpeed()
+    {
+        playerSpeed = startPlayerSpeed;
+    }
+
     private IEnumerator SetSpeed(float speed, float effectTimer)
 	{
         playerSpeed += speed;

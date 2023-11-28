@@ -181,7 +181,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &2712287881610527482
@@ -210,6 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icePieces: {fileID: 3304368444010512167, guid: 4f89e01da3bc59f42b05288c515fb5f3, type: 3}
   iceNova: {fileID: 3052102529818435104, guid: ce221796feef2fc458d8ea002d6e39aa, type: 3}
+  iceFloor: {fileID: 2353233493965432471, guid: 279187928bc9f894b87e644b63f64aca, type: 3}
   directionArrow: {fileID: 8449603892132514248}
   rotateSpeed: 100
 --- !u!114 &2844836933223493051

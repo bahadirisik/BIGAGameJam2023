@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3112b5edb0eb6c941adddd24e8e01c22, type: 3}
+  m_Name: HealerMage
+  m_EditorClassIdentifier: 
+  heroID: 2
+  heroName: Healer Mage
+  heroPrefab: {fileID: 8563302554952797082, guid: 2b62b41a8e7da6248a141de48ed4aaf5, type: 3}
+  heroSprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}

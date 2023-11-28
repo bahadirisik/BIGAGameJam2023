@@ -7,6 +7,7 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private HeroStats heroStatsSO;
     [SerializeField] private GameObject playerPrefab;
+    private Transform spawnPos;
     private PlayerMovement playerMovement;
     private IMageAttack mageAttacks;
 
@@ -17,8 +18,7 @@ public class PlayerInputHandler : MonoBehaviour
 
         if(heroStatsSO.heroPrefab != null)
 		{
-            playerMovement = Instantiate(heroStatsSO.heroPrefab,
-                GameManager.instance.GetSpawnPoints()[0].transform).GetComponent<PlayerMovement>();
+            playerMovement = Instantiate(heroStatsSO.heroPrefab, spawnPos).GetComponent<PlayerMovement>();
             mageAttacks = playerMovement.transform.GetComponent<IMageAttack>();
 
             transform.parent = playerMovement.transform;
@@ -58,5 +58,10 @@ public class PlayerInputHandler : MonoBehaviour
 	{
         heroStatsSO = _heroStatsSO;
     }
+
+    public void SpawnPos(Transform pos)
+	{
+        spawnPos = pos;
+	}
 
 }

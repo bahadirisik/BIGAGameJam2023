@@ -15,6 +15,11 @@ public class FreezeMageAttacks : MonoBehaviour, IMageAttack
 	private float iceNovaRate = 8f;
 	private float iceNovaCurrentCooldown;
 
+	[Header("Attack2")]
+	[SerializeField] private GameObject iceFloor;
+	private float iceFloorRate = 6f;
+	private float iceFloorCurrentCooldown;
+
 	[Header("Direction Arrow")]
 	[SerializeField] private Transform directionArrow;
 	[SerializeField] private float rotateSpeed;
@@ -23,6 +28,7 @@ public class FreezeMageAttacks : MonoBehaviour, IMageAttack
 	{
 		icePiecesCurrentCooldown = 0f;
 		iceNovaCurrentCooldown = 0f;
+		iceFloorCurrentCooldown = 0f;
 	}
 
 	private void Update()
@@ -31,6 +37,7 @@ public class FreezeMageAttacks : MonoBehaviour, IMageAttack
 
 		icePiecesCurrentCooldown -= Time.deltaTime;
 		iceNovaCurrentCooldown -= Time.deltaTime;
+		iceFloorCurrentCooldown -= Time.deltaTime;
 	}
 
 	public void MageAttack1()
@@ -61,6 +68,12 @@ public class FreezeMageAttacks : MonoBehaviour, IMageAttack
 		List<GameObject> playersGO = GameObject.FindGameObjectsWithTag("Player").ToList();
 		GameObject thrownByGameObj = playersGO.Find(thrownByGO => thrownByGO.transform == transform);
 		playersGO.Remove(thrownByGameObj);
+
+		if (playersGO.Count == 0)
+		{
+			return;
+		}
+
 		Vector3 novaPos = playersGO.FirstOrDefault().transform.position + new Vector3(0f,8f,0f);
 
 		GameObject iceNovaGO = Instantiate(iceNova, novaPos, Quaternion.identity);
@@ -69,7 +82,15 @@ public class FreezeMageAttacks : MonoBehaviour, IMageAttack
 
 	public void MageAttack3()
 	{
-		Debug.Log("Freeze Attack3");
+		if (iceFloorCurrentCooldown > 0f)
+		{
+			return;
+		}
+
+		iceFloorCurrentCooldown = iceFloorRate;
+		GameObject iceFloorGO = Instantiate(iceFloor, directionArrow.position, directionArrow.rotation);
+		iceFloorGO.GetComponentInChildren<IceFloor>().SetThrownBy(transform);
+		Destroy(iceFloorGO, 10f);
 	}
 
 	void RotateDirectionArrow()

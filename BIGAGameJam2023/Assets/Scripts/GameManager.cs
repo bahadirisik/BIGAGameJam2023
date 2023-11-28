@@ -39,15 +39,18 @@ public class GameManager : MonoBehaviour
 		PlayerInputManager.instance.JoinPlayer(1, -1, null);
 	}
 
-    void OnPlayerJoined(PlayerInput playerInput)
+	void OnPlayerJoined(PlayerInput playerInput)
 	{
-
 		if(playerInput.playerIndex == 0)
 		{
+			playerInput.gameObject.SetActive(true);
+			playerInput.GetComponent<PlayerInputHandler>().SpawnPos(spawnPoints[0].transform);
 			playerInput.GetComponent<PlayerInputHandler>().SetHeroStatsSO(selectedHeroesSO[playerOneSelectedHeroIndex]);
 			playerList.Add(playerInput);
 		}else if(playerInput.playerIndex == 1)
 		{
+			playerInput.gameObject.SetActive(true);
+			playerInput.GetComponent<PlayerInputHandler>().SpawnPos(spawnPoints[1].transform);
 			playerInput.GetComponent<PlayerInputHandler>().SetHeroStatsSO(selectedHeroesSO[playerTwoSelectedHeroIndex]);
 			playerList.Add(playerInput);
 		}
@@ -58,6 +61,7 @@ public class GameManager : MonoBehaviour
 	{
 		playerList.Remove(playerInput);
 	}
+
 
 	public GameObject[] GetSpawnPoints()
 	{

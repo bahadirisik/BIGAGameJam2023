@@ -30,10 +30,20 @@ public abstract class DamageableBase : MonoBehaviour
 	public void DecreaseHealth(int damage)
 	{
 		currentHealth -= damage;
+
+		if (currentHealth <= 0)
+			currentHealth = 0;
+
+		Debug.Log(gameObject.name + " " + currentHealth);
 	}
 
 	public void IncreaseHealth(int health)
 	{
 		currentHealth += health;
+
+		if (currentHealth >= startingHealth)
+			currentHealth = startingHealth;
+
+		Debug.Log(gameObject.name + " " + currentHealth);
 	}
 }
