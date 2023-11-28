@@ -1528,6 +1528,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3810c58655f6ede48869dfb6e6cf17b0, type: 2}
   - {fileID: 11400000, guid: 3ca9dc10ad49e2941adc50c2dca6fcf1, type: 2}
   - {fileID: 11400000, guid: d664e4c336ac0d0418c5976e0c51c638, type: 2}
+  companions:
+  - {fileID: 5895186356991431879, guid: 2c876bd17bae5284486c73d90f1636cf, type: 3}
+  - {fileID: 4731357372553295410, guid: 93ce8718c3b5fb94c971f2ede9ef5c88, type: 3}
+  - {fileID: 4493893009282970830, guid: 604e4ccbbc3f102428946d54181c24c0, type: 3}
   spawnPoints:
   - {fileID: 2038996149}
   - {fileID: 450866935}

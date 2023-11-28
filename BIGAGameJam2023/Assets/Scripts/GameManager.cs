@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
 	[SerializeField] private HeroStats[] selectedHeroesSO;
-
+	[SerializeField] private GameObject[] companions;
 	[SerializeField] private GameObject[] spawnPoints;
+
 	[SerializeField] private List<PlayerInput> playerList = new List<PlayerInput>();
 
 	int playerOneSelectedHeroIndex = 0;
@@ -46,12 +47,14 @@ public class GameManager : MonoBehaviour
 			playerInput.gameObject.SetActive(true);
 			playerInput.GetComponent<PlayerInputHandler>().SpawnPos(spawnPoints[0].transform);
 			playerInput.GetComponent<PlayerInputHandler>().SetHeroStatsSO(selectedHeroesSO[playerOneSelectedHeroIndex]);
+			playerInput.GetComponent<PlayerInputHandler>().SetCompanion(companions[Random.Range(0,companions.Length)]);
 			playerList.Add(playerInput);
 		}else if(playerInput.playerIndex == 1)
 		{
 			playerInput.gameObject.SetActive(true);
 			playerInput.GetComponent<PlayerInputHandler>().SpawnPos(spawnPoints[1].transform);
 			playerInput.GetComponent<PlayerInputHandler>().SetHeroStatsSO(selectedHeroesSO[playerTwoSelectedHeroIndex]);
+			playerInput.GetComponent<PlayerInputHandler>().SetCompanion(companions[Random.Range(0, companions.Length)]);
 			playerList.Add(playerInput);
 		}
 

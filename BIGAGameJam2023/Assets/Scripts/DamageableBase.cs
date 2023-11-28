@@ -5,12 +5,16 @@ using UnityEngine;
 public abstract class DamageableBase : MonoBehaviour
 {
 	private int startingHealth = 100;
-	int currentHealth;
+	private int currentHealth;
+	private int startingShield = 0;
+	private int currentShield;
+
 	bool isDead = false;
 	void Start()
 	{
 		isDead = false;
 		currentHealth = startingHealth;
+		currentShield = startingShield;
 	}
 
 	void Update()
@@ -29,6 +33,13 @@ public abstract class DamageableBase : MonoBehaviour
 
 	public void DecreaseHealth(int damage)
 	{
+		damage -= currentShield;
+
+		if(damage < 0)
+		{
+			damage = 0;
+		}
+
 		currentHealth -= damage;
 
 		if (currentHealth <= 0)
@@ -45,5 +56,17 @@ public abstract class DamageableBase : MonoBehaviour
 			currentHealth = startingHealth;
 
 		Debug.Log(gameObject.name + " " + currentHealth);
+	}
+
+	public void SetPlayerShield(int shield, float effectTimer)
+	{
+		StartCoroutine(SetShield(shield, effectTimer));
+	}
+
+	private IEnumerator SetShield(int shield, float effectTimer)
+	{
+		currentShield = shield;
+		yield return new WaitForSeconds(effectTimer);
+		currentShield = startingShield;
 	}
 }

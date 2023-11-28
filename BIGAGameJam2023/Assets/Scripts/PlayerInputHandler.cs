@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
     private HeroStats heroStatsSO;
-    [SerializeField] private GameObject playerPrefab;
+    //[SerializeField] private GameObject playerPrefab;
+    private GameObject companionPrefab;
     private Transform spawnPos;
     private PlayerMovement playerMovement;
     private IMageAttack mageAttacks;
@@ -19,6 +20,9 @@ public class PlayerInputHandler : MonoBehaviour
         if(heroStatsSO.heroPrefab != null)
 		{
             playerMovement = Instantiate(heroStatsSO.heroPrefab, spawnPos).GetComponent<PlayerMovement>();
+
+            Instantiate(companionPrefab, spawnPos).GetComponent<CompanionBase>().SetThrownBy(playerMovement.transform);
+
             mageAttacks = playerMovement.transform.GetComponent<IMageAttack>();
 
             transform.parent = playerMovement.transform;
@@ -62,6 +66,11 @@ public class PlayerInputHandler : MonoBehaviour
     public void SpawnPos(Transform pos)
 	{
         spawnPos = pos;
+	}
+
+    public void SetCompanion(GameObject companion)
+	{
+        companionPrefab = companion;
 	}
 
 }
