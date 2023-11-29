@@ -8,8 +8,12 @@ public class FireWall : MonoBehaviour
     [SerializeField] private float impactForce = 0.1f;
     [SerializeField] private float impactTime = 1f;
 
+    [SerializeField] private SpriteRenderer grpx;
+    [SerializeField] private Transform objectCollider;
+
     [SerializeField] private float maxXScale;
     private float scaleAmount = 0.1f;
+    private float scaleAmountGRPX = 0.067f;
     private float scaleSpeed = 0.005f;
     private float currentScaleSpeed;
 
@@ -27,10 +31,11 @@ public class FireWall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentScaleSpeed <= 0f && transform.localScale.x < maxXScale)
+        if(currentScaleSpeed <= 0f && objectCollider.localScale.x < maxXScale)
 		{
             currentScaleSpeed = scaleSpeed;
-            transform.localScale = new Vector3(transform.localScale.x + scaleAmount,transform.localScale.y,transform.localScale.z);
+            objectCollider.localScale = new Vector3(objectCollider.localScale.x + scaleAmount, objectCollider.localScale.y, objectCollider.localScale.z);
+            grpx.size = new Vector2(grpx.size.x + scaleAmountGRPX,10.8f);
 		}
 
         currentScaleSpeed -= Time.deltaTime;
@@ -46,6 +51,8 @@ public class FireWall : MonoBehaviour
                 damageable.TryGetComponent(out PlayerMovement playerMovement);
                 Vector2 closestPos = gameObject.GetComponent<Collider2D>().ClosestPoint(collision.transform.position);
 
+                Debug.Log(damageable.gameObject.name);
+
                 playerMovement.StartHitEffect((Vector2)playerMovement.transform.position - closestPos, impactForce, impactTime);
 
                 damageTimer = startDamageTimer;
@@ -56,6 +63,7 @@ public class FireWall : MonoBehaviour
 
     public void SetThrownBy(Transform _thrownByTransform)
 	{
+        Debug.Log("girdim1 ");
         thrownByTransform = _thrownByTransform;
 	}
 }

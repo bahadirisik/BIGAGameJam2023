@@ -38,7 +38,7 @@ public class FireBall : MonoBehaviour
 			if (damageable.transform != thrownByTransform)
 			{
 				damageable.TryGetComponent(out PlayerMovement playerMovement);
-				playerMovement.StartHitEffect(transform.right, impactForce, impactTime);
+				playerMovement.StartHitEffect((targetTransform.position - transform.position), impactForce, impactTime);
 
 				damageable.DecreaseHealth(damage);
 				Destroy(gameObject);
@@ -57,6 +57,11 @@ public class FireBall : MonoBehaviour
 
 		GameObject thrownByGameObj = playersGO.Find(thrownByGO => thrownByGO.transform == thrownByTransform);
 		playersGO.Remove(thrownByGameObj);
+
+		if(playersGO.Count <= 0)
+		{
+			return;
+		}
 
 		targetTransform = playersGO.FirstOrDefault().transform;
 		isTargetFound = true;
