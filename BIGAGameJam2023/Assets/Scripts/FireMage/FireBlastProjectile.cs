@@ -27,6 +27,12 @@ public class FireBlastProjectile : MonoBehaviour, IProjectile
 				playerMovement.StartHitEffect(transform.right, impactForce, impactTime);
 
 				damageable.DecreaseHealth(damage);
+
+				GameObject fireImpactGO = Instantiate(GameAssets.ins.fireImpactEffect, transform.position,
+					Quaternion.Euler(-90f, 0f, 0f));
+
+				Destroy(fireImpactGO, 2f);
+
 				Destroy(gameObject);
 			}
 		}

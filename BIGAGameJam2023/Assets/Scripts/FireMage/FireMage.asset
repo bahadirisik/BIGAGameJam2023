@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3112b5edb0eb6c941adddd24e8e01c22, type: 3}
   m_Name: FireMage
   m_EditorClassIdentifier: 
+  heroID: 0
   heroName: FireMage
   heroPrefab: {fileID: 7586206965801029219, guid: d8eac4115afd8b643b43a46f3cacda3e, type: 3}
   heroSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  heroSkillOneSprite: {fileID: -1642710619, guid: 24079fae397e7dc45ba05a0d5feef406, type: 3}
+  heroSkillTwoSprite: {fileID: -864813097, guid: 6434daadda03284458b8eca624e45e8b, type: 3}
+  heroSkillThreeSprite: {fileID: 601178454, guid: 336d424794372d2449b7ef07ce9b017e, type: 3}

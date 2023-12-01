@@ -16,3 +16,6 @@ MonoBehaviour:
   heroName: FreezeMage
   heroPrefab: {fileID: 2712287881610527365, guid: e07839982c2013c46a99c21b4b14f3e0, type: 3}
   heroSprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  heroSkillOneSprite: {fileID: 1592638825, guid: ff7b856d42d154b46ad0b512ed3620c3, type: 3}
+  heroSkillTwoSprite: {fileID: 166272443, guid: c54db87b64c85cd4483472b223b125a4, type: 3}
+  heroSkillThreeSprite: {fileID: 1199987802, guid: df46240294adedd46be3f54dbfb5f1d7, type: 3}

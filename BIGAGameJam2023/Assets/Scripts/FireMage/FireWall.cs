@@ -25,7 +25,7 @@ public class FireWall : MonoBehaviour
     {
         damageTimer = startDamageTimer;
         currentScaleSpeed = scaleSpeed;
-        Destroy(gameObject, 10f);
+        Destroy(gameObject.transform.parent.gameObject, 10f);
     }
 
     // Update is called once per frame
@@ -63,7 +63,6 @@ public class FireWall : MonoBehaviour
 
     public void SetThrownBy(Transform _thrownByTransform)
 	{
-        Debug.Log("girdim1 ");
         thrownByTransform = _thrownByTransform;
 	}
 }

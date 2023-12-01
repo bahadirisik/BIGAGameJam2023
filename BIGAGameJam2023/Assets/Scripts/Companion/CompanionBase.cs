@@ -20,6 +20,6 @@ public abstract class CompanionBase : MonoBehaviour
 
     public virtual void FollowHero()
     {
-        transform.position = heroTransform.position + new Vector3(2f, 2f, 0f);
+        transform.position = heroTransform.position + new Vector3(-0.5f, 1f, 0f);
     }
 }

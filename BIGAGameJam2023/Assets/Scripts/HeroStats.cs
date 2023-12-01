@@ -9,4 +9,7 @@ public class HeroStats : ScriptableObject
     public string heroName;
     public GameObject heroPrefab;
     public Sprite heroSprite;
+    public Sprite heroSkillOneSprite;
+    public Sprite heroSkillTwoSprite;
+    public Sprite heroSkillThreeSprite;
 }

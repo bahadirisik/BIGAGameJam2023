@@ -26,6 +26,12 @@ public class IcePieces : MonoBehaviour
 				playerMovement.SetPlayerSpeed(-2f,4f);
 
 				damageable.DecreaseHealth(damage);
+
+				GameObject iceImpactGO = Instantiate(GameAssets.ins.iceImpactEffect, transform.position,
+					Quaternion.Euler(-90f, 0f, 0f));
+
+				Destroy(iceImpactGO, 2f);
+
 				Destroy(gameObject);
 			}
 		}

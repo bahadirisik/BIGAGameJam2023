@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FireMageAttacks : MonoBehaviour, IMageAttack
 {
+	HealthBarUI heroInfoPanel;
+
 	[Header("Attack1")]
 	[SerializeField] private GameObject fireBlast;
 	private float fireBlastRate = 2f;
@@ -29,12 +31,14 @@ public class FireMageAttacks : MonoBehaviour, IMageAttack
 		fireBlastCurrentCooldown = 0f;
 		fireWallCurrentCooldown = 0f;
 		fireBallCurrentCooldown = 0f;
+
+		heroInfoPanel = GetComponentInChildren<PlayerInputHandler>().GetHeroInfoPanel().GetComponent<HealthBarUI>();
 	}
 
 	private void Update()
 	{
 		RotateDirectionArrow();
-
+		
 		fireBlastCurrentCooldown -= Time.deltaTime;
 		fireWallCurrentCooldown -= Time.deltaTime;
 		fireBallCurrentCooldown -= Time.deltaTime;
@@ -50,6 +54,8 @@ public class FireMageAttacks : MonoBehaviour, IMageAttack
 		fireBlastCurrentCooldown = fireBlastRate;
 		GameObject fireBlastGO = Instantiate(fireBlast, directionArrow.position, directionArrow.rotation);
 		fireBlastGO.GetComponent<FireBlastProjectile>().SetThrownBy(transform);
+
+		heroInfoPanel.SetSkillOneImage(fireBlastRate);
 	}
 
 	public void MageAttack2()
@@ -61,7 +67,9 @@ public class FireMageAttacks : MonoBehaviour, IMageAttack
 
 		fireWallCurrentCooldown = fireWallRate;
 		GameObject fireWallGO = Instantiate(fireWall, directionArrow.position, directionArrow.rotation);
-		fireWallGO.GetComponent<FireWall>().SetThrownBy(transform);
+		fireWallGO.GetComponentInChildren<FireWall>().SetThrownBy(transform);
+
+		heroInfoPanel.SetSkillTwoImage(fireWallRate);
 	}
 
 	public void MageAttack3()
@@ -74,6 +82,8 @@ public class FireMageAttacks : MonoBehaviour, IMageAttack
 		fireBallCurrentCooldown = fireBallRate;
 		GameObject fireBallGO = Instantiate(fireBall, transform.position, Quaternion.identity);
 		fireBallGO.GetComponent<FireBall>().SetThrownBy(transform);
+
+		heroInfoPanel.SetSkillThreeImage(fireBallRate);
 	}
 
 	void RotateDirectionArrow()

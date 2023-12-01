@@ -40,6 +40,11 @@ public class FireBall : MonoBehaviour
 				damageable.TryGetComponent(out PlayerMovement playerMovement);
 				playerMovement.StartHitEffect((targetTransform.position - transform.position), impactForce, impactTime);
 
+				GameObject fireImpactGO = Instantiate(GameAssets.ins.fireImpactEffect, transform.position,
+					Quaternion.Euler(-90f, 0f, 0f));
+
+				Destroy(fireImpactGO, 2f);
+
 				damageable.DecreaseHealth(damage);
 				Destroy(gameObject);
 			}

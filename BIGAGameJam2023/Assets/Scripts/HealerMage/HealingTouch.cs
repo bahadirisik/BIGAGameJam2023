@@ -31,6 +31,12 @@ public class HealingTouch : MonoBehaviour
 				healerMageHealth.IncreaseHealth(healingTouchHealthAmount);
 
 				damageable.DecreaseHealth(damage);
+
+				GameObject healImpactGO = Instantiate(GameAssets.ins.healImpactEffect,transform.position,
+					Quaternion.Euler(-90f,0f,0f));
+
+				Destroy(healImpactGO, 2f);
+
 				Destroy(gameObject);
 			}
 		}

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ed6f4220277c79e4bbb5d9f3fae9282d
+guid: a308b959f22825b48a18e1c72c4f7e4a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,7 +94,7 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Eye1 copy
+  - name: details copy 25
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -102,10 +102,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 154
-      width: 23
-      height: 18
-    spriteID: 4410a16cbf948bc4099b995aa5d683ac
+      y: 753
+      width: 118
+      height: 83
+    spriteID: c0fa0533e8a8b744ebaed489a2c31746
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -113,9 +113,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 154}
-    spritePosition: {x: 1008, y: 662}
-  - name: Eye1
+    uvTransform: {x: 4, y: 753}
+    spritePosition: {x: 674, y: 916}
+  - name: details copy 24
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -123,10 +123,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 180
-      width: 23
-      height: 18
-    spriteID: ead28832ae8dc6a408a9c1ed8d5aa9a0
+      y: 632
+      width: 161
+      height: 113
+    spriteID: da43867ad61903241bf790e0d094cdc6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -134,9 +134,51 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 180}
-    spritePosition: {x: 987, y: 662}
-  - name: Head
+    uvTransform: {x: 4, y: 632}
+    spritePosition: {x: 674, y: 806}
+  - name: details copy 23
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 495
+      width: 197
+      height: 129
+    spriteID: 6e6c9ef4f80708340af3c48a3570487e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 495}
+    spritePosition: {x: 830, y: 773}
+  - name: details copy 15
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 343
+      width: 200
+      height: 144
+    spriteID: 9619305df18ae8c48acbe9b7067507e7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 343}
+    spritePosition: {x: 782, y: 886}
+  - name: HealingFloor
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -145,9 +187,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 74
-      height: 70
-    spriteID: 5419db1185b90334abd14dc96aab57a5
+      width: 420
+      height: 331
+    spriteID: 4c591effb6cb60e43ad5b09d21aca88c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -156,70 +198,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-    spritePosition: {x: 971, y: 633}
-  - name: Body
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 82
-      width: 63
-      height: 64
-    spriteID: 68492d96d0c32774899152f0e1c2037a
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 82}
-    spritePosition: {x: 978, y: 564}
-  - name: Hand1 copy
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 86
-      y: 4
-      width: 20
-      height: 22
-    spriteID: 407b7c25cd60a114a9a58826486f174f
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 86, y: 4}
-    spritePosition: {x: 953, y: 601}
-  - name: Hand1
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 86
-      y: 34
-      width: 20
-      height: 22
-    spriteID: b5d7ef1ebb29f6c47aae75242a53bb4e
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 86, y: 34}
-    spritePosition: {x: 1047, y: 601}
+    spritePosition: {x: 642, y: 736}
   characterData:
     bones: []
     parts: []
@@ -309,80 +288,70 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: HealerMage
+  - name: HealingFloor
     spriteName: 
     isGroup: 1
     parentIndex: -1
-    spriteID: 6b1f1e8400e705946ade087aaa8709d3
-    layerID: 71
+    spriteID: 939cbfaa692f4134da4085de722eb006
+    layerID: 194
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
     isImported: 0
     isVisible: 1
-  - name: Eye1 copy
-    spriteName: Eye1 copy
+  - name: details copy 25
+    spriteName: details copy 25
     isGroup: 0
     parentIndex: 0
-    spriteID: 4410a16cbf948bc4099b995aa5d683ac
-    layerID: 70
-    mosaicPosition: {x: 4, y: 154}
+    spriteID: c0fa0533e8a8b744ebaed489a2c31746
+    layerID: 193
+    mosaicPosition: {x: 4, y: 753}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Eye1
-    spriteName: Eye1
+  - name: details copy 24
+    spriteName: details copy 24
     isGroup: 0
     parentIndex: 0
-    spriteID: ead28832ae8dc6a408a9c1ed8d5aa9a0
-    layerID: 66
-    mosaicPosition: {x: 4, y: 180}
+    spriteID: da43867ad61903241bf790e0d094cdc6
+    layerID: 192
+    mosaicPosition: {x: 4, y: 632}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Head
-    spriteName: Head
+  - name: details copy 23
+    spriteName: details copy 23
     isGroup: 0
     parentIndex: 0
-    spriteID: 5419db1185b90334abd14dc96aab57a5
-    layerID: 50
+    spriteID: 6e6c9ef4f80708340af3c48a3570487e
+    layerID: 190
+    mosaicPosition: {x: 4, y: 495}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: details copy 15
+    spriteName: details copy 15
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 9619305df18ae8c48acbe9b7067507e7
+    layerID: 182
+    mosaicPosition: {x: 4, y: 343}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: HealingFloor
+    spriteName: HealingFloor
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 4c591effb6cb60e43ad5b09d21aca88c
+    layerID: 160
     mosaicPosition: {x: 4, y: 4}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Body
-    spriteName: Body
-    isGroup: 0
-    parentIndex: 0
-    spriteID: 68492d96d0c32774899152f0e1c2037a
-    layerID: 51
-    mosaicPosition: {x: 4, y: 82}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Hand1 copy
-    spriteName: Hand1 copy
-    isGroup: 0
-    parentIndex: 0
-    spriteID: 407b7c25cd60a114a9a58826486f174f
-    layerID: 65
-    mosaicPosition: {x: 86, y: 4}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Hand1
-    spriteName: Hand1
-    isGroup: 0
-    parentIndex: 0
-    spriteID: b5d7ef1ebb29f6c47aae75242a53bb4e
-    layerID: 52
-    mosaicPosition: {x: 86, y: 34}
     flatten: 0
     isImported: 1
     isVisible: 1
   sharedRigPSDLayers: []
   pSDLayerImportSetting: []
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638367835974441931
+  platformSettingsDirtyTick: 638368655224673776
   spriteSizeExpandChanged: 0
   generateGOHierarchy: 0
   textureAssetName: 

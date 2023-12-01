@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class DamageableBase : MonoBehaviour
 {
+	public event Action<int> OnHealthChange;
+
 	private int startingHealth = 100;
 	private int currentHealth;
 	private int startingShield = 0;
@@ -15,6 +18,8 @@ public abstract class DamageableBase : MonoBehaviour
 		isDead = false;
 		currentHealth = startingHealth;
 		currentShield = startingShield;
+
+		OnHealthChange?.Invoke(currentHealth);
 	}
 
 	void Update()
@@ -28,6 +33,8 @@ public abstract class DamageableBase : MonoBehaviour
 
 	public void Death()
 	{
+		GameManager.instance.SetGameState(GameManager.GameState.GameEnded);
+
 		gameObject.SetActive(false);
 	}
 
@@ -35,17 +42,19 @@ public abstract class DamageableBase : MonoBehaviour
 	{
 		damage -= currentShield;
 
-		if(damage < 0)
+		CameraShake.Instance.ShakeCamera(3f, 0.3f);
+
+		if (damage < 0)
 		{
 			damage = 0;
 		}
 
 		currentHealth -= damage;
 
+		OnHealthChange?.Invoke(currentHealth);
+
 		if (currentHealth <= 0)
 			currentHealth = 0;
-
-		Debug.Log(gameObject.name + " " + currentHealth);
 	}
 
 	public void IncreaseHealth(int health)
@@ -55,7 +64,7 @@ public abstract class DamageableBase : MonoBehaviour
 		if (currentHealth >= startingHealth)
 			currentHealth = startingHealth;
 
-		Debug.Log(gameObject.name + " " + currentHealth);
+		OnHealthChange?.Invoke(currentHealth);
 	}
 
 	public void SetPlayerShield(int shield, float effectTimer)

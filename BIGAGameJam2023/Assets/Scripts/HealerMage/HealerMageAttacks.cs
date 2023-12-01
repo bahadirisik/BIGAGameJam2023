@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class HealerMageAttacks : MonoBehaviour, IMageAttack
 {
+	HealthBarUI heroInfoPanel;
+
 	[Header("Attack1")]
 	[SerializeField] private int healthAmount;
 	private float healRate = 10f;
@@ -29,6 +31,8 @@ public class HealerMageAttacks : MonoBehaviour, IMageAttack
 		healCurrentCooldown = 0f;
 		healingTouchCurrentCooldown = 0f;
 		healingFloorCurrentCooldown = 0f;
+
+		heroInfoPanel = GetComponentInChildren<PlayerInputHandler>().GetHeroInfoPanel().GetComponent<HealthBarUI>();
 	}
 
 	private void Update()
@@ -49,6 +53,12 @@ public class HealerMageAttacks : MonoBehaviour, IMageAttack
 		healCurrentCooldown = healRate;
 		gameObject.TryGetComponent(out DamageableBase damageableBase);
 		damageableBase.IncreaseHealth(healthAmount);
+
+		GameObject healingEffectGO = Instantiate(GameAssets.ins.healingEffect,transform.position,
+			Quaternion.Euler(-90f, 0f, 0f));
+		Destroy(healingEffectGO, 2f);
+
+		heroInfoPanel.SetSkillOneImage(healRate);
 	}
 
 	public void MageAttack2()
@@ -61,6 +71,8 @@ public class HealerMageAttacks : MonoBehaviour, IMageAttack
 		healingTouchCurrentCooldown = healingTouchRate;
 		GameObject healingTouchGO = Instantiate(healingTouch, directionArrow.position, directionArrow.rotation);
 		healingTouchGO.GetComponent<HealingTouch>().SetThrownBy(transform);
+
+		heroInfoPanel.SetSkillTwoImage(healingTouchRate);
 	}
 
 	public void MageAttack3()
@@ -71,6 +83,8 @@ public class HealerMageAttacks : MonoBehaviour, IMageAttack
 		}
 
 		healingFloorCurrentCooldown = healingFloorRate;
+
+		heroInfoPanel.SetSkillThreeImage(healingFloorRate);
 
 		List<GameObject> playersGO = GameObject.FindGameObjectsWithTag("Player").ToList();
 		GameObject thrownByGameObj = playersGO.Find(thrownByGO => thrownByGO.transform == transform);

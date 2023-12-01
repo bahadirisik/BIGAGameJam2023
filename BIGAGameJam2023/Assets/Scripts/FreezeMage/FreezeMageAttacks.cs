@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class FreezeMageAttacks : MonoBehaviour, IMageAttack
 {
+	HealthBarUI heroInfoPanel;
+
 	[Header("Attack1")]
 	[SerializeField] private GameObject icePieces;
 	private float icePiecesRate = 1.8f;
@@ -29,6 +31,8 @@ public class FreezeMageAttacks : MonoBehaviour, IMageAttack
 		icePiecesCurrentCooldown = 0f;
 		iceNovaCurrentCooldown = 0f;
 		iceFloorCurrentCooldown = 0f;
+
+		heroInfoPanel = GetComponentInChildren<PlayerInputHandler>().GetHeroInfoPanel().GetComponent<HealthBarUI>();
 	}
 
 	private void Update()
@@ -48,6 +52,9 @@ public class FreezeMageAttacks : MonoBehaviour, IMageAttack
 		}
 
 		icePiecesCurrentCooldown = icePiecesRate;
+
+		heroInfoPanel.SetSkillOneImage(icePiecesRate);
+
 		GameObject icePiecesGO = Instantiate(icePieces, directionArrow.position, directionArrow.rotation);
 		Destroy(icePiecesGO, 7f);
 		foreach (var item in icePiecesGO.GetComponentsInChildren<IcePieces>())
@@ -64,6 +71,8 @@ public class FreezeMageAttacks : MonoBehaviour, IMageAttack
 		}
 
 		iceNovaCurrentCooldown = iceNovaRate;
+
+		heroInfoPanel.SetSkillTwoImage(iceNovaRate);
 
 		List<GameObject> playersGO = GameObject.FindGameObjectsWithTag("Player").ToList();
 		GameObject thrownByGameObj = playersGO.Find(thrownByGO => thrownByGO.transform == transform);
@@ -88,6 +97,9 @@ public class FreezeMageAttacks : MonoBehaviour, IMageAttack
 		}
 
 		iceFloorCurrentCooldown = iceFloorRate;
+
+		heroInfoPanel.SetSkillThreeImage(iceFloorRate);
+
 		GameObject iceFloorGO = Instantiate(iceFloor, directionArrow.position, directionArrow.rotation);
 		iceFloorGO.GetComponentInChildren<IceFloor>().SetThrownBy(transform);
 		Destroy(iceFloorGO, 10f);

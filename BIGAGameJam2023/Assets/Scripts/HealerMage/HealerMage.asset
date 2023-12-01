@@ -16,3 +16,6 @@ MonoBehaviour:
   heroName: Healer Mage
   heroPrefab: {fileID: 8563302554952797082, guid: 2b62b41a8e7da6248a141de48ed4aaf5, type: 3}
   heroSprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  heroSkillOneSprite: {fileID: 1083192226, guid: 051844f667a741348bd5c44ac83e8406, type: 3}
+  heroSkillTwoSprite: {fileID: -1956729506, guid: 742fa6f1c2203da45aa256e2a82242c1, type: 3}
+  heroSkillThreeSprite: {fileID: 1681364260, guid: 36aaec6817d1bb44bb731d96ab747102, type: 3}

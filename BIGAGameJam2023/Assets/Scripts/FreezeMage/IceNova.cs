@@ -29,7 +29,12 @@ public class IceNova : MonoBehaviour
 	{
         isExploded = true;
 
-        if(Vector3.Distance(transform.position,target.position) <= 3f)
+        GameObject iceImpactGO = Instantiate(GameAssets.ins.iceImpactEffect, transform.position,
+                    Quaternion.Euler(-90f, 0f, 0f));
+
+        Destroy(iceImpactGO, 2f);
+
+        if (Vector3.Distance(transform.position,target.position) <= 3f)
 		{
             target.TryGetComponent(out DamageableBase damageableBase);
             damageableBase.DecreaseHealth(damage);
