@@ -12,6 +12,7 @@ public class PlayerInputHandler : MonoBehaviour
     private Transform spawnPos;
     private PlayerMovement playerMovement;
     private IMageAttack mageAttacks;
+    private int playerNumber = 0;
 
 	void Start()
     {
@@ -30,6 +31,7 @@ public class PlayerInputHandler : MonoBehaviour
             transform.position = playerMovement.transform.position;
 
             heroInfoPanel.GetComponent<HealthBarUI>().SetPlayer(this);
+            playerMovement.transform.GetComponentInChildren<TMPro.TextMeshPro>().text = playerNumber.ToString();
         }
     }
 
@@ -98,9 +100,15 @@ public class PlayerInputHandler : MonoBehaviour
         companionPrefab = companion;
 	}
 
-    public void SetHeroInfoPanel(GameObject infoPanel)
+    public void SetHeroInfoPanel(GameObject infoPanel, int _playerNumber)
     {
         heroInfoPanel = infoPanel;
+        playerNumber = _playerNumber;
     }
+
+    public int GetPlayerNumber()
+	{
+        return playerNumber;
+	}
 
 }

@@ -52,7 +52,11 @@ public class FireMageAttacks : MonoBehaviour, IMageAttack
 		}
 
 		fireBlastCurrentCooldown = fireBlastRate;
-		GameObject fireBlastGO = Instantiate(fireBlast, directionArrow.position, directionArrow.rotation);
+		//GameObject fireBlastGO = Instantiate(fireBlast, directionArrow.position, directionArrow.rotation);
+
+		GameObject fireBlastGO = ObjectPoolManager.SpawnObject(fireBlast, directionArrow.position,
+				directionArrow.rotation, ObjectPoolManager.PoolType.GameObjectSystem);
+
 		fireBlastGO.GetComponent<FireBlastProjectile>().SetThrownBy(transform);
 
 		heroInfoPanel.SetSkillOneImage(fireBlastRate);
@@ -66,7 +70,11 @@ public class FireMageAttacks : MonoBehaviour, IMageAttack
 		}
 
 		fireWallCurrentCooldown = fireWallRate;
-		GameObject fireWallGO = Instantiate(fireWall, directionArrow.position, directionArrow.rotation);
+		//GameObject fireWallGO = Instantiate(fireWall, directionArrow.position, directionArrow.rotation);
+
+		GameObject fireWallGO = ObjectPoolManager.SpawnObject(fireWall, directionArrow.position,
+				directionArrow.rotation, ObjectPoolManager.PoolType.GameObjectSystem);
+
 		fireWallGO.GetComponentInChildren<FireWall>().SetThrownBy(transform);
 
 		heroInfoPanel.SetSkillTwoImage(fireWallRate);
@@ -80,7 +88,11 @@ public class FireMageAttacks : MonoBehaviour, IMageAttack
 		}
 
 		fireBallCurrentCooldown = fireBallRate;
-		GameObject fireBallGO = Instantiate(fireBall, transform.position, Quaternion.identity);
+		//GameObject fireBallGO = Instantiate(fireBall, transform.position, Quaternion.identity);
+
+		GameObject fireBallGO = ObjectPoolManager.SpawnObject(fireBall, directionArrow.position,
+				Quaternion.identity, ObjectPoolManager.PoolType.GameObjectSystem);
+
 		fireBallGO.GetComponent<FireBall>().SetThrownBy(transform);
 
 		heroInfoPanel.SetSkillThreeImage(fireBallRate);

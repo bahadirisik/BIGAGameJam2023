@@ -9,6 +9,8 @@ public class FireBall : MonoBehaviour
 	[SerializeField] private float fireBallSpeed = 10f;
 	[SerializeField] private float impactForce = 8f;
 	[SerializeField] private float impactTime = 0.7f;
+	private float deathTime = 5f;
+	private float startingDeathTime = 5f;
 
 	private Transform thrownByTransform;
 
@@ -20,7 +22,23 @@ public class FireBall : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		SetTargetTransform();
-		Destroy(gameObject, 5f);
+		//Destroy(gameObject, 5f);
+	}
+
+	/*private void OnEnable()
+	{
+		
+	}*/
+
+	private void Update()
+	{
+		deathTime -= Time.deltaTime;
+
+		if(deathTime <= 0f)
+		{
+			deathTime = startingDeathTime;
+			ObjectPoolManager.ReturnObjectToPool(gameObject);
+		}
 	}
 
 	private void FixedUpdate()
@@ -40,13 +58,11 @@ public class FireBall : MonoBehaviour
 				damageable.TryGetComponent(out PlayerMovement playerMovement);
 				playerMovement.StartHitEffect((targetTransform.position - transform.position), impactForce, impactTime);
 
-				GameObject fireImpactGO = Instantiate(GameAssets.ins.fireImpactEffect, transform.position,
-					Quaternion.Euler(-90f, 0f, 0f));
-
-				Destroy(fireImpactGO, 2f);
+				GameObject fireImpactGO = ObjectPoolManager.SpawnObject(GameAssets.ins.fireImpactEffect, transform.position,
+				Quaternion.Euler(-90f, 0f, 0f), ObjectPoolManager.PoolType.ParticleSystem);
 
 				damageable.DecreaseHealth(damage);
-				Destroy(gameObject);
+				ObjectPoolManager.ReturnObjectToPool(gameObject);
 			}
 		}
 	}

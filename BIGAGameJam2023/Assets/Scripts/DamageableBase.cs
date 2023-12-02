@@ -33,7 +33,7 @@ public abstract class DamageableBase : MonoBehaviour
 
 	public void Death()
 	{
-		GameManager.instance.SetGameState(GameManager.GameState.GameEnded);
+		//GameManager.instance.OnGameEnded();
 
 		gameObject.SetActive(false);
 	}

@@ -8,13 +8,31 @@ public class FireBlastProjectile : MonoBehaviour, IProjectile
 	[SerializeField] private float fireBlastSpeed = 10f;
 	[SerializeField] private float impactForce = 0.1f;
 	[SerializeField] private float impactTime = 1f;
+	private float deathTime = 5f;
+	private float startingDeathTime = 5f;
 
 	private Transform thrownByTransform;
 
-	private void Start()
+	/*private void Start()
 	{
 		gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * fireBlastSpeed, ForceMode2D.Impulse);
-		Destroy(gameObject, 7f);
+		//Destroy(gameObject, 7f);
+	}*/
+
+	private void OnEnable()
+	{
+		gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * fireBlastSpeed, ForceMode2D.Impulse);
+	}
+
+	private void Update()
+	{
+		deathTime -= Time.deltaTime;
+
+		if (deathTime <= 0f)
+		{
+			deathTime = startingDeathTime;
+			ObjectPoolManager.ReturnObjectToPool(gameObject);
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -28,12 +46,11 @@ public class FireBlastProjectile : MonoBehaviour, IProjectile
 
 				damageable.DecreaseHealth(damage);
 
-				GameObject fireImpactGO = Instantiate(GameAssets.ins.fireImpactEffect, transform.position,
-					Quaternion.Euler(-90f, 0f, 0f));
 
-				Destroy(fireImpactGO, 2f);
+				GameObject fireImpactGO = ObjectPoolManager.SpawnObject(GameAssets.ins.fireImpactEffect, transform.position,
+				Quaternion.Euler(-90f, 0f, 0f), ObjectPoolManager.PoolType.ParticleSystem);
 
-				Destroy(gameObject);
+				ObjectPoolManager.ReturnObjectToPool(gameObject);
 			}
 		}
 	}

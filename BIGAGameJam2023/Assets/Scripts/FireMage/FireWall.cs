@@ -7,6 +7,9 @@ public class FireWall : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private float impactForce = 0.1f;
     [SerializeField] private float impactTime = 1f;
+    private float deathTime = 6f;
+    private float startingDeathTime = 6f;
+
 
     [SerializeField] private SpriteRenderer grpx;
     [SerializeField] private Transform objectCollider;
@@ -21,15 +24,23 @@ public class FireWall : MonoBehaviour
     private float damageTimer;
 
     private Transform thrownByTransform;
-    void Start()
+    /*void Start()
     {
         damageTimer = startDamageTimer;
         currentScaleSpeed = scaleSpeed;
-        Destroy(gameObject.transform.parent.gameObject, 10f);
+        //Destroy(gameObject.transform.parent.gameObject, 10f);
+    }*/
+
+	private void OnEnable()
+	{
+        objectCollider.localScale = new Vector3(1f,1f,1f);
+        grpx.size = new Vector2(19.2f, 10.8f);
+        damageTimer = startDamageTimer;
+        currentScaleSpeed = scaleSpeed;
     }
 
-    // Update is called once per frame
-    void Update()
+	// Update is called once per frame
+	void Update()
     {
         if(currentScaleSpeed <= 0f && objectCollider.localScale.x < maxXScale)
 		{
@@ -38,8 +49,15 @@ public class FireWall : MonoBehaviour
             grpx.size = new Vector2(grpx.size.x + scaleAmountGRPX,10.8f);
 		}
 
+        if (deathTime <= 0f)
+        {
+            deathTime = startingDeathTime;
+            ObjectPoolManager.ReturnObjectToPool(gameObject.transform.parent.gameObject);
+        }
+
         currentScaleSpeed -= Time.deltaTime;
         damageTimer -= Time.deltaTime;
+        deathTime -= Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

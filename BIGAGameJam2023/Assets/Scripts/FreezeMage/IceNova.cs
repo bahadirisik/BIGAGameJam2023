@@ -47,8 +47,4 @@ public class IceNova : MonoBehaviour
         target = targetTransform;
 	}
 
-	private void OnDrawGizmos()
-	{
-        Gizmos.DrawWireSphere(Vector3.zero,4f);
-	}
 }

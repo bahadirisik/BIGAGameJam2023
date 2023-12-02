@@ -56,6 +56,7 @@ public class FreezeMageAttacks : MonoBehaviour, IMageAttack
 		heroInfoPanel.SetSkillOneImage(icePiecesRate);
 
 		GameObject icePiecesGO = Instantiate(icePieces, directionArrow.position, directionArrow.rotation);
+
 		Destroy(icePiecesGO, 7f);
 		foreach (var item in icePiecesGO.GetComponentsInChildren<IcePieces>())
 		{

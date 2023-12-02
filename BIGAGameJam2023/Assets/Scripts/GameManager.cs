@@ -1,18 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
+	public event Action OnLevelEnd;
+
     public static GameManager instance;
 
 	[SerializeField] private HeroStats[] selectedHeroesSO;
 	[SerializeField] private GameObject[] companions;
 	[SerializeField] private GameObject[] spawnPoints;
 	[SerializeField] private GameObject[] playerInfoPanels;
+	[SerializeField] private GameObject endGamePanel;
 
 	[SerializeField] private List<PlayerInput> playerList = new List<PlayerInput>();
+	public static int[] playerPoints = { 0, 0 };
 
 	int playerOneSelectedHeroIndex = 0;
 	int playerTwoSelectedHeroIndex = 0;
@@ -41,6 +47,7 @@ public class GameManager : MonoBehaviour
 	}
 	void Start()
     {
+		endGamePanel.SetActive(false);
 		playerOneSelectedHeroIndex = 0;
 		playerTwoSelectedHeroIndex = 0;
     }
@@ -65,7 +72,7 @@ public class GameManager : MonoBehaviour
 			playerInput.GetComponent<PlayerInputHandler>().SpawnPos(spawnPoints[0].transform);
 			playerInput.GetComponent<PlayerInputHandler>().SetHeroStatsSO(selectedHeroesSO[playerOneSelectedHeroIndex]);
 			playerInput.GetComponent<PlayerInputHandler>().SetCompanion(companions[Random.Range(0,companions.Length)]);
-			playerInput.GetComponent<PlayerInputHandler>().SetHeroInfoPanel(playerInfoPanels[0]);
+			playerInput.GetComponent<PlayerInputHandler>().SetHeroInfoPanel(playerInfoPanels[0], 1);
 			playerList.Add(playerInput);
 		}else if(playerInput.playerIndex == 1)
 		{
@@ -73,7 +80,7 @@ public class GameManager : MonoBehaviour
 			playerInput.GetComponent<PlayerInputHandler>().SpawnPos(spawnPoints[1].transform);
 			playerInput.GetComponent<PlayerInputHandler>().SetHeroStatsSO(selectedHeroesSO[playerTwoSelectedHeroIndex]);
 			playerInput.GetComponent<PlayerInputHandler>().SetCompanion(companions[Random.Range(0, companions.Length)]);
-			playerInput.GetComponent<PlayerInputHandler>().SetHeroInfoPanel(playerInfoPanels[1]);
+			playerInput.GetComponent<PlayerInputHandler>().SetHeroInfoPanel(playerInfoPanels[1], 2);
 			playerList.Add(playerInput);
 		}
 
@@ -81,7 +88,11 @@ public class GameManager : MonoBehaviour
 
 	void OnPlayerLeft(PlayerInput playerInput)
 	{
-		playerList.Remove(playerInput);
+		if(gameState == GameState.Playing)
+		{
+			playerList.Remove(playerInput);
+			OnGameEnded();
+		}
 	}
 
 
@@ -100,13 +111,34 @@ public class GameManager : MonoBehaviour
 		playerTwoSelectedHeroIndex = index;
 	}
 
-	public void SetGameState(GameState state)
+	/*public void SetGameState(GameState state)
 	{
 		gameState = state;
-	}
+	}*/
 
 	public GameState GetGameState()
 	{
 		return gameState;
+	}
+
+	public void OnGameEnded()
+	{
+		PlayerInput lastPlayer;
+		if (playerList.Count > 0)
+		{
+			lastPlayer = playerList[0];
+			int playerNumber = lastPlayer.GetComponent<PlayerInputHandler>().GetPlayerNumber();
+			if (playerNumber == 1)
+				playerPoints[0]++;
+			else if (playerNumber == 2)
+				playerPoints[1]++;
+		}
+
+		OnLevelEnd?.Invoke();
+
+		if(endGamePanel != null)
+			endGamePanel.SetActive(true);
+
+		gameState = GameState.GameEnded;
 	}
 }
